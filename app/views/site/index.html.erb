@@ -1,0 +1,45 @@
+<div class="container">
+ <div class="jumbotron2">
+  <h1 class="findertitle">Find My Movie!</h1>
+  <%= form_tag('/', method: 'get', class: 'form') do %>
+  <div class='row'>
+    <%= text_field_tag(:q, @q, :placeholder => 'Enter movie title', :class => "titlesearch searchfield form-control") %>
+    <input type="hidden" value="search" name="s" >
+  </div>
+  </div>
+  <div class="row  search-buttons text-center">
+    <%= submit_tag('Search', :class => "btn btn-lg btn-primary searchbtn") %>
+    <a class="btn btn-info btn-lg luckybtn" href="/?s=search&all=all">Feeling Lucky</a>
+  </div>
+
+  <% end %>
+  <% if @movies.empty? and @searching == true %>
+    <div class="row">
+      <h2 class="llamaerror"> We're sorry, our army of llamas can't find your movie! </h2>
+    </div>
+  <% end %>
+  <% @movies.each do |movie| %>
+    <div class="row">
+      <div class="col-sm-3 postersettings">
+       <% if movie.poster_url == "" %>
+         <img class="" src="<%= asset_path('http://placehold.it/120X190') %>" />
+       <% else %>
+         <%= image_tag movie.poster_url %>
+       <% end %>
+     </div>
+     <div class="col-sm-9 details">
+       <h2 class="results-title"><%=movie.title%> (<%=movie.year%>)</h2>
+       <p class="results-subtitle"><%=movie.genre %> | <span class="glyphicon glyphicon-time"></span>
+        <%= pluralize(movie.runtime/60, 'hr' )%>
+        <%= pluralize(movie.runtime%60, 'min' )%>
+        <% if movie.oscars > 0 %>
+        | <%=pluralize(movie.oscars, 'Oscar')%>
+        <% end %>
+      </p>
+      <!-- RATINGS WILL GO HERE -->
+        <p><%=movie.plot%></p>
+      </div>
+    </div>
+  <% end %>
+  
+</div> <-- //container-->
