@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  year: 1
+  release_date: 2014-12-09
+  genre: MyString
+  poster_url: MyText
+  plot: MyText
+  runtime: 1
+  oscars: 1
+  imdbid: MyString
+
+two:
+  title: MyString
+  year: 1
+  release_date: 2014-12-09
+  genre: MyString
+  poster_url: MyText
+  plot: MyText
+  runtime: 1
+  oscars: 1
+  imdbid: MyString
